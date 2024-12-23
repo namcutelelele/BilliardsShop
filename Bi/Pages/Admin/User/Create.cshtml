@@ -1,0 +1,77 @@
+﻿@page
+@model Client.Pages.Admin.User.CreateModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Bi</title>
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>aranoz</title>
+    <link rel="icon" href="~/img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="~/css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="~/css/all.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="~/css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-4">
+        <h1 class="mb-4">Create User</h1>
+        <form method="post">
+            <div class="my-3 p-3 bg-body rounded shadow-sm">
+                <div class="mb-3 row">
+                    <label for="id" class="col-sm-2 col-form-label">Id</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="id" name="id">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="name" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="password" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col-sm-10 offset-sm-2">
+                        <button type="submit" class="btn btn-primary" name="submit">Create</button>
+                        <a href="/Admin/User/Index" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

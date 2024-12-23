@@ -1,0 +1,91 @@
+﻿@page
+@model CartModel
+@{
+}
+<body>
+
+
+    <!-- breadcrumb start-->
+    <!--================Cart Area =================-->
+    <section class="cart_area padding_top">
+
+        <div class="container">
+            <div class="cart_header">
+                <h2>Cart Products</h2>
+            </div>
+            <div class="cart_inner">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        @if(Model.Carts.Count > 0)
+                        {
+                            <tbody>
+                                @foreach (var product in Model.Carts)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="media">
+                                                <div class="d-flex">
+                                                    <img style="width: 100px;height: auto; " src="@product.ImgSource" alt="" />
+                                                </div>
+                                                <div class="media-body">
+                                                    <p>@product.Name</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h5>@product.Price</h5>
+                                        </td>
+                                        <td>
+                                            <div class="product_count">
+
+                                                <input class="input-number" disabled type="text" value="@product.Quantity" min="0" max="@product.UnitsInStock">
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h5>@product.Total</h5>
+                                        </td>
+                                    </tr>
+                                }
+
+
+
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <h5>Subtotal</h5>
+                                    </td>
+                                    <td>
+                                        <h5>@Model.SubTotal</h5>
+                                    </td>
+                                </tr>
+                               
+                            </tbody>
+                        }
+                        
+                    </table>
+                    @if (Model.Carts.Count > 0)
+                    {
+                        <div class="checkout_btn_inner float-right">
+                            <a class="btn_1" href="/Category">Continue Shopping</a>
+                            <a class="btn_1 checkout_btn_1" href="/CheckOut">Proceed to checkout</a>
+                        </div>
+                    }
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Cart Area =================-->
+    <!--::footer_part start::-->
+
+</body>

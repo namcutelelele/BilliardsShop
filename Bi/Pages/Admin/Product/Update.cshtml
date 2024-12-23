@@ -1,0 +1,167 @@
+﻿@page "{id:int}"
+@model Client.Pages.Admin.Product.UpdateModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Bi</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>aranoz</title>
+    <link rel="icon" href="~/img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <!-- Additional CSS files -->
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-4">
+        <h1 class="mb-4">Update Product</h1>
+        <form method="post" enctype="multipart/form-data">
+            <div class="card p-4 shadow-sm">
+                <div class="mb-3 row">
+                    <label for="id" class="col-sm-2 col-form-label">Id</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="id" name="Product.Id" value="@Model.Products.Id" readonly>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="name" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="name" name="Product.Name" value="@Model.Products.Name">
+                    </div>
+                </div>
+                <!-- Other fields similar to above -->
+                <div class="mb-3 row">
+                    <label for="category" class="col-sm-2 col-form-label">Category</label>
+                    <div class="col-sm-10">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                @Model.Products.CategoryName
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                                @foreach (var category in Model.Categories)
+                                {
+                                    <li>
+                                        <a class="dropdown-item" href="#" onclick="selectCategory('@category.Id', '@category.Name')">@category.Name</a>
+                                    </li>
+                                }
+                            </ul>
+                            <input type="hidden" id="category" name="category">
+                        </div>
+                    </div>
+                </div>
+                <!-- Additional fields -->
+                <div class="mb-3 row">
+                    <label for="brand" class="col-sm-2 col-form-label">Brand</label>
+                    <div class="col-sm-10">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="brandDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                @Model.Products.BrandName
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="brandDropdown">
+                                @foreach (var brand in Model.Brands)
+                                {
+                                    <li>
+                                        <a class="dropdown-item" href="#" onclick="selectBrand('@brand.Id', '@brand.Name')">@brand.Name</a>
+                                    </li>
+                                }
+                            </ul>
+                            <input type="hidden" id="brand" name="brand">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="price" class="col-sm-2 col-form-label">Price</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="price" name="Product.Price" value="@Model.Products.Price">
+                    </div>
+                </div>
+                <!-- Include other fields here -->
+                <div class="mb-3 row">
+                    <label for="isAvailable" class="col-sm-2 col-form-label">Available</label>
+                    <div class="col-sm-10">
+                        <input type="checkbox" class="form-check-input" id="isAvailable" name="Product.IsAvailable" @(Model.Products.IsAvailable == true ? "checked" : "")>
+                        <label class="form-check-label" for="isAvailable">Available</label>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="description" class="col-sm-2 col-form-label">Description</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="description" name="Product.Description" value="@Model.Products.Description">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="shortDescription" class="col-sm-2 col-form-label">Short Description</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="shortDescription" name="Product.ShortDescription" value="@Model.Products.ShortDescription">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="weight" class="col-sm-2 col-form-label">Weight</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="weight" name="Product.Weight" value="@Model.Products.Weight">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="eraserSize" class="col-sm-2 col-form-label">Eraser Size</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="eraserSize" name="Product.EraserSize" value="@Model.Products.EraserSize">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="buttLength" class="col-sm-2 col-form-label">Butt Length</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="buttLength" name="Product.ButtLength" value="@Model.Products.ButtLength">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="shaftLength" class="col-sm-2 col-form-label">Shaft Length</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="shaftLength" name="Product.ShaftLength" value="@Model.Products.ShaftLength">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="grip" class="col-sm-2 col-form-label">Grip</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="grip" name="Product.Grip" value="@Model.Products.Grip">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="productImage1" class="col-sm-2 col-form-label">Product Image 1</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control" id="productImage1" name="ProductImage1" accept="image/*">
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <div class="col-sm-10 offset-sm-2">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <a href="/Admin/Product/Index" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    
+</body>
+</html>
+<script>
+    function selectCategory(id, name) {
+        document.getElementById('categoryDropdown').innerText = name;
+        document.getElementById('category').value = id;
+    }
+
+    function selectBrand(id, name) {
+        document.getElementById('brandDropdown').innerText = name;
+        document.getElementById('brand').value = id;
+    }
+</script>

@@ -1,0 +1,32 @@
+﻿@page
+@model Client.Pages.Account.Information.IndexModel
+@{
+}
+<body class="bg-light">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="container">
+            <div class="card p-4 shadow">
+                <h1 class="mb-4">Information</h1>
+
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <h5>Name:</h5>
+                    </div>
+                    <div class="col-md-7">
+                        <p>@Model.User.Name</p>
+                    </div>
+                    
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <h5>Email:</h5>
+                    </div>
+                    <div class="col-md-7">
+                        <p>@Model.User.Email</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

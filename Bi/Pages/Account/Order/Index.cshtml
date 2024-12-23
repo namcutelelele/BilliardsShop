@@ -1,0 +1,43 @@
+﻿@page
+@model Client.Pages.Account.Order.IndexModel
+@{
+}
+<body class="bg-light">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="container">
+            <div class="card p-4 shadow">
+                <h1 class="mb-4">Order</h1>
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="col-md-2">Date</th>
+                                <th class="col-md-2">Total</th>
+                                <th class="col-md-3">Shipping Address</th>
+                                <th class="col-md-2">Note</th>
+                                <th class="col-md-2">Status</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var order in Model.Orders)
+                            {
+                                <tr>
+                                    <td>@order.Date.ToString("dd/MM/yyyy")</td>
+                                    <td>@order.Total</td>
+                                    <td>@order.ShippingAddress </td>
+                                    <td>@order.Note</td>
+                                    <td>@(order.Status == 0 ? "Unpaid" : "Paid")</td>
+                                    <td><a href="/Account/Order/OrderDetail?orderId=@order.Id">Detail</a></td>
+                                </tr>
+                            }
+                            
+                          
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
